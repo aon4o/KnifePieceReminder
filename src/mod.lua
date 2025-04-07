@@ -38,11 +38,14 @@ function mod:remind(text)
     self.renderText = true
 end
 
+function mod:reloadTextSettings()
+    self.font = Font()
+    self.font:Load(settings.font)
+end
+
 function mod:init()
     mod:load()
-
-    self.font = Font()
-    self.font:Load("font/terminus.fnt")
+    mod:reloadTextSettings()
 
     self.displayMessage = ""
     self.renderText = false
@@ -63,10 +66,10 @@ function mod:checkConditions()
 
     if stage_type == StageType.STAGETYPE_REPENTANCE or stage_type == StageType.STAGETYPE_REPENTANCE_B then
         if stage == LevelStage.STAGE1_2 and not Isaac.GetPlayer(0):HasCollectible(CollectibleType.COLLECTIBLE_KNIFE_PIECE_1) then
-            mod:remind("Knife Piece 1?")
+            mod:remind("Knife Piece 1")
         elseif stage == LevelStage.STAGE2_2 and Isaac.GetPlayer(0):HasCollectible(CollectibleType.COLLECTIBLE_KNIFE_PIECE_1)
             and not Isaac.GetPlayer(0):HasCollectible(CollectibleType.COLLECTIBLE_KNIFE_PIECE_2) then
-            mod:remind("Knife Piece 2?")
+            mod:remind("Knife Piece 2")
         end
     end
 end
@@ -96,18 +99,17 @@ function mod:postRender()
         return
     end
 
-    local x = (Isaac.GetScreenWidth() / 2) + settings.xOffset
-    local y = 50 + settings.yOffset
-    local textWidth = self.font:GetStringWidth(self.displayMessage) * (settings.scale / 100)
-    local alpha = settings.transparency / 255
+    local scale = settings:getScale()
+
+    local hudOffset = settings:getHudOffset()
 
     self.font:DrawStringScaled(
-        self.displayMessage, x - textWidth / 2, y,
-        settings.scale / 100,
-        settings.scale / 100,
-        KColor(1, 1, 1, alpha),
-        0,
-        true
+        self.displayMessage,
+        settings.xOffset + hudOffset.X,
+        settings.yOffset + hudOffset.Y,
+        scale,
+        scale,
+        KColor(1, 1, 1, settings.textOpacity)
     )
 end
 

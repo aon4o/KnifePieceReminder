@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
     <name>Knife Piece Reminder</name>
     <directory>knife_piece_reminder</directory>
-    <id>3441566007</id>
-    <description>A simple mod that reminds you to take your knife pieces as well as to go to mausoleum 
-
-    - The mod will remind you on entering *Downpour 2/ Dross 2* and *Mines 2 / Ashpit 2*
-    - Once you kill the boss on Mines 2 while having both knife pieces it will also remind you to go to mausoleum
-</description>
-    <version>1.9</version>
+    <description>
+A simple mod that reminds you to take your knife pieces as well as to go to mausoleum 
+- The mod will remind you on entering *Downpour 2/ Dross 2* and *Mines 2 / Ashpit 2*
+- Once you kill the boss on Mines 2 while having both knife pieces it will also remind you to go to mausoleum
+    </description>
+	<version>1.0</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Tweaks"/>

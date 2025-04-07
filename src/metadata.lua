@@ -1,6 +1,7 @@
 local metadata = {
-    modName = "KnifePieceReminder",
-    displayName = "Knife Piece Reminder",
+    modName = "Knife Piece Reminder",
+    version = "1.0",
+    author = "aon4o",
 }
 
 return metadata
